@@ -1,5 +1,8 @@
 <script lang="ts">
   import Router from "./Router.svelte";
+  import PageContainer from "./components/PageContainer.svelte";
 </script>
 
-<Router />
+<PageContainer>
+  <Router />
+</PageContainer>
