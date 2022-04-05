@@ -10,18 +10,18 @@
   }
 
   :global(.page-container > *) {
-    width: 45rem;
+    width: 70rem;
     padding-inline: 0.625rem;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 1120px) {
     :global(.page-container) {
       align-items: initial;
     }
 
     :global(.page-container > *) {
       width: auto;
-      max-width: 45rem;
+      max-width: 70rem;
     }
   }
 </style>
