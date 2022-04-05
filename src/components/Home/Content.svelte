@@ -1,4 +1,6 @@
-<main class="home-content"></main>
+<main class="home-content">
+  <slot></slot>
+</main>
 
 <style>
   .home-content {

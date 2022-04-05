@@ -1,5 +1,6 @@
-<aside class="home-sidebar"></aside>
-
+<aside class="home-sidebar">
+  <slot></slot>
+</aside>
 
 <style>
   .home-sidebar {

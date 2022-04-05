@@ -1,1 +1,3 @@
-<main class="borrow-books-container"></main>
+<main class="borrow-books-container">
+  <slot></slot>
+</main>
