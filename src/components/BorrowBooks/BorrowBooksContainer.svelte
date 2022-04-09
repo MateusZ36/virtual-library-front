@@ -7,3 +7,11 @@
   <BorrowBooksTable />
   <BorrowBooksFooter />
 </main>
+
+<style>
+  .borrow-books-container {
+    padding: 30px;
+    background: var(--white);
+    border-radius: 4px;
+  }
+</style>
