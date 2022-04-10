@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { cartStore } from '../../stores/cart';
+  import { cartStore } from '../../../stores/cart';
 
-  import type { Book } from "../../types/Book";
-  import type { CartProduct } from "../../types/CartProduct";
+  import type { Book } from "../../../types/Book";
+  import type { CartProduct } from "../../../types/CartProduct";
 
   export let item: Book;
   

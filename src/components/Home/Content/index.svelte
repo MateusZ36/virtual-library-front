@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   
-  import { api } from "../../services/api";
-  import { shelfStore } from "../../stores/shelf";
-  import BookShelf from "./../BookShelf/BookShelf.svelte";
+  import { api } from "../../../services/api";
+  import { shelfStore } from "../../../stores/shelf";
+  import BookShelf from "./../../BookShelf/BookShelf.svelte";
 
   let shelf = [];
 
@@ -11,7 +11,7 @@
 
   onMount(async () => {
     try {
-      const response = await api.get('books');
+      const response = await api.get('/books');
       shelfStore.update(() => response.data)
     } catch(err) {
       console.error(err);

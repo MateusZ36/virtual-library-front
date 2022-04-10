@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Book } from "../../types/Book";
+    import type { Book } from "../../../types/Book";
     import AddToCartButton from "./AddToCartButton.svelte";
 
     export let book: Book
