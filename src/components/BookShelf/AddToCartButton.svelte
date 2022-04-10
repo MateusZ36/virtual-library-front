@@ -1,28 +1,41 @@
 <script lang="ts">
-    import type { Book } from '../../Wrapper/BooksWrapper.svelte';
-	import { cartNewEntry } from './../BorrowBooks/BorrowBooksTable.svelte';
+  import { cartStore } from '../../stores/cart';
 
-    export let item: Book;
-    
-    function addToCart(item) {
-        cartNewEntry(item)
-    }
+  import type { Book } from "../../types/Book";
+  import type { CartProduct } from "../../types/CartProduct";
+
+  export let item: Book;
+  
+  function addToCart(item: Book) {
+    cartStore.update(oldCart => {
+      let newProd: CartProduct = {
+        id: item.id,
+        title: item.title,
+        price: 0,
+        imgUrl: item.imgUrl,
+        amount: 1,
+        authorId: item.authorId,
+        publisherId: item.publisherId,
+      } 
+      return [...oldCart, newProd];
+    });
+  }
 </script>
 
 <button 
-    on:click={() => { addToCart(item) }}
+  on:click={() => addToCart(item)}
 >
-    ADD TO CART
+  ADD TO CART
 </button>
 
 <style>
-    button {
-        border: 2px solid orange;
-        background-color: white;
-        color: orange;
-        border-radius: 4px;
-        padding: 12px 20px;
-        font-weight: bold;
-        margin-top: 25px;
-    }
+  button {
+    border: 2px solid var(--yellow-500);
+    background-color: var(--white);
+    color: var(--yellow-500);
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-weight: bold;
+    margin-top: 25px;
+  }
 </style>
