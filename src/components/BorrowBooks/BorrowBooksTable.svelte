@@ -1,33 +1,13 @@
-<script lang="ts" context="module">
-  import type { Book } from "../../Wrapper/BooksWrapper.svelte";
+<script lang="ts">
+  import type { CartProduct } from "../../types/CartProduct";
+  import { cartStore } from "../../stores/cart";
+  import { formatPrice } from "../../utils/format";
 
-  type CartProduct = Book & {
-    amount: number;
-  }
+  let cart: CartProduct[];
 
-  const cart = [];
+  cartStore.subscribe(newValue => cart = newValue)
 
-  export function cartNewEntry(newBook: Book) {
-    let newProd: CartProduct = {
-      id: newBook.id,
-      title: newBook.title,
-      price: 0,
-      imgUrl: newBook.imgUrl,
-      amount: 1,
-      authorId: newBook.authorId,
-      publisherId: newBook.publisherId,
-    }
-
-    cart.push(newProd)
-    console.log({ cart })
-  }
-
-  const { format: formatPrice } = new Intl.NumberFormat('pt-br', {
-    style: 'currency',
-    currency: 'BRL',
-  });
-
-  const cartFormatted = cart.map(product => ({
+  $: cartFormatted = cart.map(product => ({
     ...product,
     formattedPrice: formatPrice(product.price),
     total: formatPrice(product.price * product.amount),
@@ -86,10 +66,10 @@
     {#each cartFormatted as product}
       <tr data-testid="product">
         <td>
-          <img src={product.imgUrl} alt={product.name} />
+          <img src={product.imgUrl} alt={product.title} />
         </td>
         <td>
-          <strong>{product.name}</strong>
+          <strong>{product.title}</strong>
           <span>{product.formattedPrice}</span>
         </td>
         <td>
@@ -111,7 +91,7 @@
             <button
               type="button"
               data-testid="increment-product"
-            onClick={() => handleProductIncrement(product)}
+              onClick={() => handleProductIncrement(product)}
             >
               Incrementar
             </button>
@@ -124,7 +104,7 @@
           <button
             type="button"
             data-testid="remove-product"
-          onClick={() => handleRemoveProduct(product.id)}
+            onClick={() => handleRemoveProduct(product.id)}
           >
             Deletar
           </button>
