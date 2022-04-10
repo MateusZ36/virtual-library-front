@@ -14,7 +14,7 @@
     cart.push(newProd)
 
     console.log("pushed into the cart")
-    console.log("tira os baguio chumbado dai")
+    console.log(cart)
   }
 
   type Product = {
