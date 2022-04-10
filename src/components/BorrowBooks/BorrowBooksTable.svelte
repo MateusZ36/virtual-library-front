@@ -18,21 +18,30 @@
     amount: number;
   }
 
-  // essas funções abaixo deverão estar na context
   function updateProductAmount({
     productId,
     amount,
   }: UpdateProductAmount) {
-    console.log({
-      productId,
-      amount,
-    })
+    cartStore.update(oldCart => {
+      let oldProductIndex = oldCart.findIndex(
+        product => product.id === productId
+      )
+
+      oldCart[oldProductIndex].amount = amount
+      return oldCart;
+    });
   }
 
-  function removeProduct(bookId: number) {
-    console.log('book removed', bookId)
+  function removeProduct(productId: number) {
+    cartStore.update(oldCart => {
+      let oldProductIndex = oldCart.findIndex(
+        product => product.id === productId
+      )
+
+      oldCart.splice(oldProductIndex, 1)
+      return oldCart;
+    });
   }
-  // essas funções acima deverão estar na context
 
   function handleProductDecrement(product: CartProduct) {
     updateProductAmount({
@@ -40,6 +49,7 @@
       amount: product.amount - 1
     })
   }
+
   function handleProductIncrement(product: CartProduct) {
     updateProductAmount({
       productId: product.id,
@@ -63,7 +73,7 @@
     </tr>
   </thead>
   <tbody>
-    {#each cartFormatted as product}
+    {#each cartFormatted as product (product.id)}
       <tr data-testid="product">
         <td>
           <img src={product.imgUrl} alt={product.title} />
@@ -78,7 +88,7 @@
               type="button"
               data-testid="decrement-product"
               disabled={product.amount <= 1}
-              onClick={() => handleProductDecrement(product)}
+              on:click={() => handleProductDecrement(product)}
             >
               Decrementar
             </button>
@@ -91,7 +101,7 @@
             <button
               type="button"
               data-testid="increment-product"
-              onClick={() => handleProductIncrement(product)}
+              on:click={() => handleProductIncrement(product)}
             >
               Incrementar
             </button>
@@ -104,7 +114,7 @@
           <button
             type="button"
             data-testid="remove-product"
-            onClick={() => handleRemoveProduct(product.id)}
+            on:click={() => handleRemoveProduct(product.id)}
           >
             Deletar
           </button>

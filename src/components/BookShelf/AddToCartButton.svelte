@@ -11,7 +11,7 @@
       let newProd: CartProduct = {
         id: item.id,
         title: item.title,
-        price: 0,
+        price: 5,
         imgUrl: item.imgUrl,
         amount: 1,
         authorId: item.authorId,
