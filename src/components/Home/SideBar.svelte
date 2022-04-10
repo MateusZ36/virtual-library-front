@@ -20,12 +20,25 @@
       console.error(err);
     }
   })
+
+  let currentSelected = '';
+
+  function changeCurrentSelected(event) {
+    currentSelected = event.detail.text
+  }
 </script>
 
 <aside class="home-sidebar">
-  {#each genres as item}
-    <Genre genre={item} />
-  {/each}
+  <div class="buttons-container">
+    {#each genres as genre}
+      <Genre
+        genre={genre}
+        icon={"<icon>"}
+        currentSelected={currentSelected}
+        on:message={changeCurrentSelected}
+      />
+    {/each}
+  </div>
 </aside>
 
 <style>
@@ -33,5 +46,12 @@
     min-width: 15rem;
     max-width: 35%;
     /* width: 100%; */
+  }
+
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
   }
 </style>

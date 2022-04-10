@@ -29,6 +29,6 @@
   .home-content {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    gap: 2rem 1rem;  
   }
 </style>

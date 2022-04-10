@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px 16px 10px;
     background-color: var(--white);
     color: var(--black);
     width: 14rem;

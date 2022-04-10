@@ -21,6 +21,8 @@
 <style>
   .home-container {
     display: flex;
+    padding-top: 2.5rem;
+    gap: 2rem;
   }
 
   /* body {
