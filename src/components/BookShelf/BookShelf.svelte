@@ -8,14 +8,14 @@
 <table>
     <div class="image">
         <thead>
-            <img src={book.image} alt={book.title}>
+            <img src={book.imgUrl} alt={book.title}>
         </thead>
     </div>
     <tbody>
         <tr>
             <td><strong>{book.title}</strong></td>
-            <td>{book.author}</td>
-            <td>{book.publisher}</td>
+            <td>{book.authorId}</td>
+            <td>{book.publisherId}</td>
         </tr>
     </tbody>
     <div class="add-button">

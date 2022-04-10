@@ -1,9 +1,10 @@
 <script lang="ts" context="module">
     export type Book = {
         id: number,
-        image: string,
+        imgUrl: string,
         title: string,
-        author: string,
-        publisher: string,
+        authorId: number,
+        publisherId: number,
+        price: number;
     }; 
 </script>

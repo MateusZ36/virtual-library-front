@@ -1,43 +1,26 @@
 <script lang="ts" context="module">
   import type { Book } from "../../Wrapper/BooksWrapper.svelte";
 
-  export function cartNewEntry(value: Book) {
-    let newProd: Product = {
-      id: value.id,
-      name: value.title,
-      price: 0,
-      imgUrl: value.image,
-      amount: 1,
-      authorId: 0,
-      publisherId: 0
-    }
-    cart.push(newProd)
-
-    console.log("pushed into the cart")
-    console.log(cart)
-  }
-
-  type Product = {
-    id: number;
-    name: string;
-    price: number;
-    imgUrl: string;
+  type CartProduct = Book & {
     amount: number;
-    authorId: number;
-    publisherId: number;
   }
 
-  let product: Product = {
-    id: 1,
-    name: 'João e Maria',
-    price: 14.99,
-    imgUrl: 'https://google.com.br',
-    amount: 2,
-    authorId: 2,
-    publisherId: 3,
-  }
+  const cart = [];
 
-  const cart = [product];
+  export function cartNewEntry(newBook: Book) {
+    let newProd: CartProduct = {
+      id: newBook.id,
+      title: newBook.title,
+      price: 0,
+      imgUrl: newBook.imgUrl,
+      amount: 1,
+      authorId: newBook.authorId,
+      publisherId: newBook.publisherId,
+    }
+
+    cart.push(newProd)
+    console.log({ cart })
+  }
 
   const { format: formatPrice } = new Intl.NumberFormat('pt-br', {
     style: 'currency',
@@ -71,13 +54,13 @@
   }
   // essas funções acima deverão estar na context
 
-  function handleProductDecrement(product: Product) {
+  function handleProductDecrement(product: CartProduct) {
     updateProductAmount({
       productId: product.id,
       amount: product.amount - 1
     })
   }
-  function handleProductIncrement(product: Product) {
+  function handleProductIncrement(product: CartProduct) {
     updateProductAmount({
       productId: product.id,
       amount: product.amount + 1
@@ -100,52 +83,54 @@
     </tr>
   </thead>
   <tbody>
-    <tr data-testid="product">
-      <td>
-        <img src={product.imgUrl} alt={product.name} />
-      </td>
-      <td>
-        <strong>{product.name}</strong>
-        <span>{product.price}</span>
-      </td>
-      <td>
-        <div>
+    {#each cartFormatted as product}
+      <tr data-testid="product">
+        <td>
+          <img src={product.imgUrl} alt={product.name} />
+        </td>
+        <td>
+          <strong>{product.name}</strong>
+          <span>{product.formattedPrice}</span>
+        </td>
+        <td>
+          <div>
+            <button
+              type="button"
+              data-testid="decrement-product"
+              disabled={product.amount <= 1}
+              onClick={() => handleProductDecrement(product)}
+            >
+              Decrementar
+            </button>
+            <input
+              type="text"
+              data-testid="product-amount"
+              readOnly
+              value={product.amount}
+            />
+            <button
+              type="button"
+              data-testid="increment-product"
+            onClick={() => handleProductIncrement(product)}
+            >
+              Incrementar
+            </button>
+          </div>
+        </td>
+        <td>
+          <strong>{product.total}</strong>
+        </td>
+        <td>
           <button
             type="button"
-            data-testid="decrement-product"
-            disabled={product.amount <= 1}
-            onClick={() => handleProductDecrement(product)}
+            data-testid="remove-product"
+          onClick={() => handleRemoveProduct(product.id)}
           >
-            Decrementar
+            Deletar
           </button>
-          <input
-            type="text"
-            data-testid="product-amount"
-            readOnly
-            value={product.amount}
-          />
-          <button
-            type="button"
-            data-testid="increment-product"
-          onClick={() => handleProductIncrement(product)}
-          >
-            Incrementar
-          </button>
-        </div>
-      </td>
-      <td>
-        <strong>{product.amount}</strong>
-      </td>
-      <td>
-        <button
-          type="button"
-          data-testid="remove-product"
-        onClick={() => handleRemoveProduct(product.id)}
-        >
-          Deletar
-        </button>
-      </td>
-    </tr>
+        </td>
+      </tr>
+    {/each}
   </tbody>
 </table>
 
