@@ -1,4 +1,22 @@
-<script lang="ts">
+<script lang="ts" context="module">
+  import type { Book } from "../../Wrapper/BooksWrapper.svelte";
+
+  export function cartNewEntry(value: Book) {
+    let newProd: Product = {
+      id: value.id,
+      name: value.title,
+      price: 0,
+      imgUrl: value.image,
+      amount: 1,
+      authorId: 0,
+      publisherId: 0
+    }
+    cart.push(newProd)
+
+    console.log("pushed into the cart")
+    console.log("tira os baguio chumbado dai")
+  }
+
   type Product = {
     id: number;
     name: string;
@@ -183,7 +201,7 @@
     padding: 6px;
   }
 
-  button svg {
+  /* button svg {
     color: var(--yellow-500);
     transition: color 0.2s;
   }
@@ -195,5 +213,5 @@
   button:disabled svg {
     color: var(--yellow-600);
     cursor: not-allowed;
-  }
+  } */
 </style>

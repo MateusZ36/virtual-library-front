@@ -3,7 +3,7 @@
   import BorrowBooksContainer from "../components/BorrowBooks/BorrowBooksContainer.svelte";
 </script>
 
-<h1>Cesta de livros</h1>
+<h1>CESTA DE LIVROS</h1>
 
 <Link to="/">Home</Link>
 

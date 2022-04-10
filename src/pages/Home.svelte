@@ -1,20 +1,31 @@
 <script lang="ts">
-  import { Link } from "svelte-navigator";
+    import { Link } from "svelte-navigator";
 
-  import Content from "../components/Home/Content.svelte";
-  import SideBar from "../components/Home/SideBar.svelte";
+    import Content from "../components/Home/Content.svelte";
+    import SideBar from "../components/Home/SideBar.svelte";
 </script>
 
-<h1>Acervo da biblioteca</h1>
-<Link to="borrow-books">Cesta de livros</Link>
+<header>
+    <h1>ACERVO VIRTUAL</h1>
+</header>
 
-<div class="home-container">
-  <SideBar></SideBar>
-  <Content></Content>
-</div>
+<nav>
+    <Link to="borrow-books">Cesta de Livros</Link> 
+</nav>
+
+<body>
+    <div class="home-container">
+        <Content />
+    </div>
+</body>
 
 <style>
-  .home-container {
-    display: flex;
-  }
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .home-container {
+        display: flex;
+    }
 </style>
