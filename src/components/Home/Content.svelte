@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  
   import { api } from "../../services/api";
   import { currentlySelectedGenreIdStore } from "../../stores/currentlySelectedGenreId";
   import { shelfStore } from "../../stores/shelf";
