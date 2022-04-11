@@ -152,6 +152,7 @@
 
   span {
     display: block;
+    color: var(--gray-600);
     margin-top: 5px;
     font-size: 18px;
     font-weight: bold;
@@ -177,7 +178,7 @@
   }
 
   /* button svg {
-    color: var(--yellow-500);
+    color: var(--yellow-600);
     transition: color 0.2s;
   }
 

@@ -29,9 +29,9 @@
 
 <style>
   button {
-    border: 2px solid var(--yellow-500);
+    border: 2px solid var(--yellow-600);
     background-color: var(--white);
-    color: var(--yellow-500);
+    color: var(--yellow-600);
     border-radius: 4px;
     padding: 12px 20px;
     font-weight: bold;

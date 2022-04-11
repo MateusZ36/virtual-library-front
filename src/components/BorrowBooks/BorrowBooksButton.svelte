@@ -2,7 +2,7 @@
 
 <style>
   button {
-    background: var(--yellow-500);
+    background: var(--yellow-600);
     color: var(--white);
     border: 0;
     border-radius: 4px;

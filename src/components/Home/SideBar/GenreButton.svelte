@@ -53,7 +53,7 @@
 
   button.selected {
     background: var(--gray-600);
-    color: var(--yellow-500);
+    color: var(--yellow-600);
   }
 
   button .name {
