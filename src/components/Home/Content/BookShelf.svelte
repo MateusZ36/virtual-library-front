@@ -7,7 +7,7 @@
 
 <div class="book-item">
   <img src={book.imgUrl} alt={book.title}>
-  <div>
+  <div class="book-details">
     <p><strong>{book.title}</strong></p>
     <p>{book.author.name}</p>
     <p>{book.publisher.name}</p>
@@ -25,17 +25,21 @@
     width: 14rem;
   }
 
-  p {
+  img {
+    margin-top: 6.5px;
+    width: 13rem;
+    height: 18rem;
+  }
+
+  .book-details {
+    margin-bottom: 1rem;
+  }
+
+  .book-details p {
     margin-top: 5px;
     margin-bottom: 8px;
     width: 100%;
     display: inline-table;
     text-align: center;
-  }
-
-  img {
-    margin-top: 6.5px;
-    width: 13rem;
-    height: 18rem;
   }
 </style>

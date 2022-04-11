@@ -35,6 +35,6 @@
     border-radius: 4px;
     padding: 12px 20px;
     font-weight: bold;
-    margin-top: 25px;
+    margin-top: auto;
   }
 </style>
