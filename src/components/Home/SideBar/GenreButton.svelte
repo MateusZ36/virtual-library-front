@@ -3,9 +3,7 @@
 
   import type { Genre } from "../../../types/Genre";
 
-  export let genre: Genre
-  // icons will not be strings when we start to use them
-  export let icon: string = '';
+  export let genre: Genre;
   export let isSelected: Boolean = false;
 
   const dispatch = createEventDispatcher();
@@ -15,7 +13,6 @@
   class:selected="{isSelected}"
   on:click="{() => dispatch('message', { genreId: genre.id, isSelected })}"
 >
-  <span>{icon}</span>
   <span class="name">{genre.name}</span>
 </button>
 
@@ -43,9 +40,9 @@
     background: var(--gray-700);
   }
 
-  button + button {
+  /* button + button {
     margin-top: 1rem;
-  }
+  } */
 
   button:first-child {
     margin-top: 0;

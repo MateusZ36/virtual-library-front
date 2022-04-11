@@ -20,8 +20,6 @@
           }
         })
 
-        console.log(bookGenresResponse.data)
-
         const booksIds = bookGenresResponse.data.map(book => book.bookId)
 
         if (booksIds.length > 0) {
@@ -31,7 +29,7 @@
               id: booksIds
             }
           })
-          console.log(booksResponse.data)
+
           shelfStore.update(() => booksResponse.data)
         } else {
           shelfStore.update(() => [])

@@ -43,7 +43,6 @@
     {#each genres as genre}
       <GenreButton
         genre={genre}
-        icon={"<icon>"}
         isSelected={currentlySelectedGenreId === genre.id}
         on:message={updateSelectedGenresIdsStore}
       />
