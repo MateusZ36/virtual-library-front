@@ -69,4 +69,11 @@
     flex-wrap: wrap;
     gap: 2rem 1rem;  
   }
+
+  @media (max-width: 563px) {
+    .home-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 </style>

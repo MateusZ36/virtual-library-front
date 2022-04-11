@@ -63,4 +63,17 @@
 
     width: 100%;
   }
+
+  @media (max-width: 563px) {
+    .home-sidebar {
+      max-width: initial;
+    }
+
+    .buttons-container {
+      justify-content: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+  }
 </style>

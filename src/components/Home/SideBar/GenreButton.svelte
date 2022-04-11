@@ -56,4 +56,10 @@
   button .name {
     text-transform: capitalize;
   }
+
+  @media (max-width: 563px) {
+    button {
+      width: 11rem;
+    }
+  }
 </style>

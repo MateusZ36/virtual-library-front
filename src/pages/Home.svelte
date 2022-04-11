@@ -36,6 +36,13 @@
     gap: 2rem;
   }
 
+  @media (max-width: 563px) {
+    .home-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
   /* body {
     display: flex;
     justify-content: center;
