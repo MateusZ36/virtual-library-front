@@ -2,21 +2,21 @@
   import { onMount } from "svelte";
   
   import { api } from "../../services/api";
-  import { currentlySelectedGenresIdsStore } from "../../stores/currentlySelectedGenresIds";
+  import { currentlySelectedGenreIdStore } from "../../stores/currentlySelectedGenreId";
   import { shelfStore } from "../../stores/shelf";
   import type { BookGenres } from "../../types/BookGenre";
   import type { BookWithAuthorAndPublisher } from "../../types/BookWithAuthorAndPublisher";
   import BookShelf from "./Content/BookShelf.svelte";
 
   let shelf: BookWithAuthorAndPublisher[] = [];
-  let currentlySelectedGenresIds: number[] = [];
+  let currentlySelectedGenreId: number = -1;
 
   async function requestBooksData() {
     try {
-      if (currentlySelectedGenresIds.length > 0) {
+      if (currentlySelectedGenreId >= 0) {
         const bookGenresResponse = await api.get<BookGenres[]>('/bookGenres', {
           params: {
-            genreId: [...currentlySelectedGenresIds],
+            genreId: currentlySelectedGenreId,
           }
         })
 
@@ -47,12 +47,9 @@
   shelfStore.subscribe(
     newValue => shelf = newValue
   )
-  currentlySelectedGenresIdsStore.subscribe(
+  currentlySelectedGenreIdStore.subscribe(
     newValue => {
-      console.log({
-        newValue
-      })
-      currentlySelectedGenresIds = newValue
+      currentlySelectedGenreId = newValue
       requestBooksData()
     }
   )

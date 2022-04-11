@@ -4,22 +4,22 @@
   import { api } from "../../services/api";
   import type { Genre } from "../../types/Genre";
   import { genresStore } from "../../stores/genres";
-  import { currentlySelectedGenresIdsStore } from "../../stores/currentlySelectedGenresIds";
+  import { currentlySelectedGenreIdStore } from "../../stores/currentlySelectedGenreId";
   import GenreButton from "./SideBar/GenreButton.svelte";
 
   let genres: Genre[] = [];
 
   genresStore.subscribe(newValue => genres = newValue)
   
-  let currentlySelectedGenresIds: number[] = [];
+  let currentlySelectedGenreId: number = -1;
 
   onMount(async () => {
     try {
       const response = await api.get<Genre[]>('/genres');
       genresStore.update(() => response.data)
 
-      currentlySelectedGenresIds = [response.data[0].id]
-      currentlySelectedGenresIdsStore.update(() => currentlySelectedGenresIds)
+      currentlySelectedGenreId = response.data[0].id
+      currentlySelectedGenreIdStore.update(() => currentlySelectedGenreId)
     } catch(err) {
       console.error(err);
     }
@@ -32,14 +32,9 @@
     } = event.detail;
   
     if (isSelected === false) {
-      currentlySelectedGenresIds = [...currentlySelectedGenresIds, genreId]
-    } else if (isSelected === true) {
-      const index = currentlySelectedGenresIds.findIndex(id => id === genreId);
-      currentlySelectedGenresIds.splice(index, 1);
+      currentlySelectedGenreIdStore.update(() => genreId)
+      currentlySelectedGenreId = genreId
     }
-
-    currentlySelectedGenresIdsStore.update(() => currentlySelectedGenresIds)
-    currentlySelectedGenresIds = currentlySelectedGenresIds
   }
 </script>
 
@@ -49,7 +44,7 @@
       <GenreButton
         genre={genre}
         icon={"<icon>"}
-        isSelected={currentlySelectedGenresIds.includes(genre.id)}
+        isSelected={currentlySelectedGenreId === genre.id}
         on:message={updateSelectedGenresIdsStore}
       />
     {/each}
