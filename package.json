@@ -29,6 +29,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "sirv-cli": "^2.0.0",
+    "svelte-icons": "^2.1.0",
     "svelte-navigator": "^3.1.5"
   }
 }

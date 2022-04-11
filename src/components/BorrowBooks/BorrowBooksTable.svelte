@@ -1,4 +1,8 @@
 <script lang="ts">
+  import FaMinusCircle from 'svelte-icons/fa/FaMinusCircle.svelte'
+  import FaPlusCircle from 'svelte-icons/fa/FaPlusCircle.svelte'
+  import FaTrash from 'svelte-icons/fa/FaTrash.svelte'
+
   import type { CartProduct } from "../../types/CartProduct";
   import { cartStore } from "../../stores/cart";
   import { formatPrice } from "../../utils/format";
@@ -90,7 +94,9 @@
               disabled={product.amount <= 1}
               on:click={() => handleProductDecrement(product)}
             >
-              Decrementar
+              <div class="icon">
+                <FaMinusCircle />
+              </div>
             </button>
             <input
               type="text"
@@ -103,7 +109,9 @@
               data-testid="increment-product"
               on:click={() => handleProductIncrement(product)}
             >
-              Incrementar
+            <div class="icon">
+              <FaPlusCircle />
+            </div>
             </button>
           </div>
         </td>
@@ -116,7 +124,9 @@
             data-testid="remove-product"
             on:click={() => handleRemoveProduct(product.id)}
           >
-            Deletar
+            <div class="icon">
+              <FaTrash />
+            </div>
           </button>
         </td>
       </tr>
@@ -164,7 +174,7 @@
   }
 
   div input {
-    border: 1px solid var(--gray-50);
+    border: 1px solid var(--gray-300);
     border-radius: 4px;
     color: var(--gray-300);
     padding: 6px;
@@ -177,17 +187,19 @@
     padding: 6px;
   }
 
-  /* button svg {
+  button .icon {
+    width: 1.5rem;
+    height: 1.5rem;
     color: var(--yellow-600);
-    transition: color 0.2s;
+    transition: filter 0.2s;
   }
 
-  button:hover svg {
-    color: var(--yellow-600);
+  button:hover .icon {
+    filter: grayscale(0.2);
   }
 
-  button:disabled svg {
-    color: var(--yellow-600);
+  button:disabled .icon {
+    filter: grayscale(0.5);
     cursor: not-allowed;
-  } */
+  }
 </style>
