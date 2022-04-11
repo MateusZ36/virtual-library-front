@@ -1,8 +1,15 @@
 <script lang="ts">
   import { Link } from "svelte-navigator";
 
+  import { cartStore } from "../stores/cart";
   import Content from "../components/Home/Content.svelte";
   import SideBar from "../components/Home/SideBar.svelte";
+
+  import type { CartProduct } from "../types/CartProduct";
+
+  let cart: CartProduct[];
+
+  cartStore.subscribe(newValue => cart = newValue)
 </script>
 
 <header>
@@ -10,7 +17,11 @@
 </header> 
 
 <nav>
-  <Link to="borrow-books">Cesta de Livros</Link> 
+  {#if (cart.length > 0)}
+    <Link to="borrow-books">Cesta de Livros</Link> 
+  {:else}
+    <p>&#160</p>
+  {/if}
 </nav>
 
 <div class="home-container">
