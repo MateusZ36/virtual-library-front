@@ -1,0 +1,187 @@
+{
+    "books": [
+        {
+            "id": 0,
+            "title": "The Dark command",
+            "imgUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1577796728l/50210412.jpg",
+            "authorId": 3,
+            "publisherId": 3,
+            "price": 0
+        },
+        {
+            "id": 1,
+            "title": "Harry Potter and The Deathly Hallows",
+            "imgUrl": "https://kbimages1-a.akamaihd.net/00609b27-40c0-4e40-aed7-f0de6fee6428/1200/1200/False/harry-potter-and-the-deathly-hallows-4.jpg",
+            "authorId": 1,
+            "publisherId": 1,
+            "price": 0
+        },
+        {
+            "id": 2,
+            "title": "Aladdin",
+            "imgUrl": "https://images-na.ssl-images-amazon.com/images/I/81FcjKS7peL.jpg",
+            "authorId": 0,
+            "publisherId": 0,
+            "price": 0
+        },
+        {
+            "id": 3,
+            "title": "IT",
+            "imgUrl": "https://m.media-amazon.com/images/I/41nngxCNKxL.jpg",
+            "authorId": 2,
+            "publisherId": 2,
+            "price": 0
+        },
+        {
+            "id": 3,
+            "title": "Percy Jackson and The Olympians: The Lightning Thief",
+            "imgUrl": "https://images-na.ssl-images-amazon.com/images/I/91RQ5d-eIqL.jpg",
+            "authorId": 4,
+            "publisherId": 4,
+            "price": 0
+        },
+        {
+            "id": 4,
+            "title": "Turma da Mônica Jovem: Os Mais Jovens Heróis da Terrra",
+            "imgUrl": "https://images-na.ssl-images-amazon.com/images/I/91l6iE5ceyL.jpg",
+            "authorId": 5,
+            "publisherId": 5,
+            "price": 0
+        },
+        {
+            "id": 5,
+            "title": "Eistein's Theory of Relativity",
+            "imgUrl": "https://images-na.ssl-images-amazon.com/images/I/61i9sy00GxS.jpg",
+            "authorId": 6,
+            "publisherId": 6,
+            "price": 0
+        }
+    ],
+    "authors": [
+        {
+            "id": 0,
+            "name": "Lucy Kincaid"
+        },
+        {
+            "id": 1,
+            "name": "J.K. Rolling"
+        },
+        {
+            "id": 2,
+            "name": "Stephen King"
+        },
+        {
+            "id": 3,
+            "name": "Richard K. Morgan"
+        },
+        {
+            "id": 4,
+            "name": "Rick Riordan"
+        },
+        {
+            "id": 5,
+            "name": "Mauricio de Souza"
+        },
+        {
+            "id": 6,
+            "name": "Classic Reprint"
+        }
+    ],
+    "publishers": [
+        {
+            "id": 0,
+            "name": "Brimax"
+        },
+        {
+            "id": 1,
+            "name": "Rakuten Kobo"
+        },
+        {
+            "id": 2,
+            "name": "New America Library"
+        },
+        {
+            "id": 3,
+            "name": "Gollancz"
+        },
+        {
+            "id": 4,
+            "name": "Weekly"
+        },
+        {
+            "id": 5,
+            "name": "Panini Comics"
+        },
+        {
+            "id": 6,
+            "name": "Classic Reprint"
+        }
+    ],
+    "bookGenres": [
+        {
+            "bookId": 0,
+            "genreId": 0
+        },
+        {
+            "bookId": 1,
+            "genreId": 1
+        },
+        {
+            "bookId": 2,
+            "genreId": 3
+        },
+        {
+            "bookId": 3,
+            "genreId": 2
+        }
+    ],
+    "genres": [
+        {
+            "id": 0,
+            "name": "adventure"
+        },
+        {
+            "id": 1,
+            "name": "fiction"
+        },
+        {
+            "id": 2,
+            "name": "terror"
+        },
+        {
+            "id": 3,
+            "name": "childish"
+        }
+    ],
+    "loans": [
+        {
+            "bookId": 1,
+            "borrower": 0,
+            "expirationDate": "01651656168131"
+        },
+        {
+            "bookId": 3,
+            "borrower": 1,
+            "expirationDate": "01651656154681"
+        },
+        {
+            "bookId": 0,
+            "borrower": 0,
+            "expirationDate": "01651656543819"
+        }
+    ],
+    "borrowers": [
+        {
+            "id": 0,
+            "name": "Paulo Andre",
+            "email": "pa2406@gmail.com",
+            "cpf": "0243849767168"
+        },
+        {
+            "id": 1,
+            "name": "Marcos Castro",
+            "email": "marcos.castro@gmail.com",
+            "cpf": "0516492638184"
+        }
+    ]
+}
