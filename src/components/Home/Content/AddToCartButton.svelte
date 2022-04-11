@@ -1,23 +1,22 @@
 <script lang="ts">
   import { cartStore } from '../../../stores/cart';
 
-  import type { Book } from "../../../types/Book";
+  import type { BookWithAuthorAndPublisher } from "../../../types/BookWithAuthorAndPublisher";
   import type { CartProduct } from "../../../types/CartProduct";
 
-  export let item: Book;
+  export let item: BookWithAuthorAndPublisher;
   
-  function addToCart(item: Book) {
+  function addToCart(item: BookWithAuthorAndPublisher) {
     cartStore.update(oldCart => {
-      let newProd: CartProduct = {
+      let newProduct: CartProduct = {
         id: item.id,
         title: item.title,
         price: 5,
         imgUrl: item.imgUrl,
         amount: 1,
-        authorId: item.authorId,
-        publisherId: item.publisherId,
+        authorName: item.author.name,
       } 
-      return [...oldCart, newProd];
+      return [...oldCart, newProduct];
     });
   }
 </script>

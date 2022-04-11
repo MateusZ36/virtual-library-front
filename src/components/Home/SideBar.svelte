@@ -2,40 +2,55 @@
   import { onMount } from "svelte";
 
   import { api } from "../../services/api";
+  import type { Genre } from "../../types/Genre";
   import { genresStore } from "../../stores/genres";
-  import Genre from "./SideBar/Genre.svelte";
+  import { currentlySelectedGenresIdsStore } from "../../stores/currentlySelectedGenresIds";
+  import GenreButton from "./SideBar/GenreButton.svelte";
 
-  let genres = [];
+  let genres: Genre[] = [];
 
   genresStore.subscribe(newValue => genres = newValue)
+  
+  let currentlySelectedGenresIds: number[] = [];
 
   onMount(async () => {
     try {
-      console.log(genres)
-      const response = await api.get('/genre');
-      console.log(response.data)
+      const response = await api.get<Genre[]>('/genres');
       genresStore.update(() => response.data)
-      console.log(genres)
+
+      currentlySelectedGenresIds = [response.data[0].id]
+      currentlySelectedGenresIdsStore.update(() => currentlySelectedGenresIds)
     } catch(err) {
       console.error(err);
     }
   })
 
-  let currentSelected = '';
+  function updateSelectedGenresIdsStore(event) {
+    const {
+      genreId,
+      isSelected,
+    } = event.detail;
+  
+    if (isSelected === false) {
+      currentlySelectedGenresIds = [...currentlySelectedGenresIds, genreId]
+    } else if (isSelected === true) {
+      const index = currentlySelectedGenresIds.findIndex(id => id === genreId);
+      currentlySelectedGenresIds.splice(index, 1);
+    }
 
-  function changeCurrentSelected(event) {
-    currentSelected = event.detail.text
+    currentlySelectedGenresIdsStore.update(() => currentlySelectedGenresIds)
+    currentlySelectedGenresIds = currentlySelectedGenresIds
   }
 </script>
 
 <aside class="home-sidebar">
   <div class="buttons-container">
     {#each genres as genre}
-      <Genre
+      <GenreButton
         genre={genre}
         icon={"<icon>"}
-        currentSelected={currentSelected}
-        on:message={changeCurrentSelected}
+        isSelected={currentlySelectedGenresIds.includes(genre.id)}
+        on:message={updateSelectedGenresIdsStore}
       />
     {/each}
   </div>

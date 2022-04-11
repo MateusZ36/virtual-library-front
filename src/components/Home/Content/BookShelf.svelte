@@ -1,16 +1,16 @@
 <script lang="ts">
-  import type { Book } from "../../../types/Book";
+  import type { BookWithAuthorAndPublisher } from "../../../types/BookWithAuthorAndPublisher";
   import AddToCartButton from "./AddToCartButton.svelte";
 
-  export let book: Book
+  export let book: BookWithAuthorAndPublisher
 </script>
 
 <div class="book-item">
   <img src={book.imgUrl} alt={book.title}>
   <div>
     <p><strong>{book.title}</strong></p>
-    <p>{book.authorId}</p>
-    <p>{book.publisherId}</p>
+    <p>{book.author.name}</p>
+    <p>{book.publisher.name}</p>
   </div>
   <AddToCartButton item={book}/>
 </div>

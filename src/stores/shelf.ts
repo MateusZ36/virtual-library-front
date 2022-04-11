@@ -1,4 +1,6 @@
 import { writable } from "svelte/store";
-import type { Book } from "../types/Book";
+import type {
+  BookWithAuthorAndPublisher
+} from "../types/BookWithAuthorAndPublisher";
 
-export const shelfStore = writable<Book[]>([]);
+export const shelfStore = writable<BookWithAuthorAndPublisher[]>([]);

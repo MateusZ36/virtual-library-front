@@ -6,14 +6,14 @@
   export let genre: Genre
   // icons will not be strings when we start to use them
   export let icon: string = '';
-  export let currentSelected = '';
+  export let isSelected: Boolean = false;
 
   const dispatch = createEventDispatcher();
 </script>
 
 <button
-  class:selected="{currentSelected === genre.name}"
-  on:click="{() => dispatch('message', { text: genre.name })}"
+  class:selected="{isSelected}"
+  on:click="{() => dispatch('message', { genreId: genre.id, isSelected })}"
 >
   <span>{icon}</span>
   <span class="name">{genre.name}</span>

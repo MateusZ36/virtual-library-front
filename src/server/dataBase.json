@@ -57,7 +57,7 @@
             "price": 0
         }
     ],
-    "author": [
+    "authors": [
         {
             "id": 0,
             "name": "Lucy Kincaid"
@@ -87,7 +87,7 @@
             "name": "Classic Reprint"
         }
     ],
-    "publisher": [
+    "publishers": [
         {
             "id": 0,
             "name": "Brimax"
@@ -117,7 +117,7 @@
             "name": "Classic Reprint"
         }
     ],
-    "bookGenre": [
+    "bookGenres": [
         {
             "bookId": 0,
             "genreId": 0
@@ -135,7 +135,7 @@
             "genreId": 2
         }
     ],
-    "genre": [
+    "genres": [
         {
             "id": 0,
             "name": "adventure"
@@ -153,7 +153,7 @@
             "name": "childish"
         }
     ],
-    "loan": [
+    "loans": [
         {
             "bookId": 1,
             "borrower": 0,
@@ -170,7 +170,7 @@
             "expirationDate": "01651656543819"
         }
     ],
-    "borrower": [
+    "borrowers": [
         {
             "id": 0,
             "name": "Paulo Andre",
